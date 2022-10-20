@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 - Boilerplate</title>
+  </head>
+  <body>
+
+    <h1>Assignment 2 Boilerplate</h1>
+
+    <select id="mySelect" multiple></select>
+
+    <p>
+        You selected: <strong id="selectedOption"></strong>
+    </p>
+
+    <script>
+        // Let's create an array of objects, cycle through the array, and output each object to the console.
+        const myArray = []
+
+        // Add an obejct to array
+        myArray.push(
+            {
+                FirstName: "Han",
+                LastName: "Solo"
+            }
+        )
+
+        // Add an object to array
+        myArray.push(
+            {
+                FirstName: "Luke",
+                LastName: "Skywalker"
+            }
+        )
+
+        // Here's another way to add an object to the array
+        const person = {
+            FirstName: "Bubba",
+            LastName: "Fett"
+        }
+        myArray.push(person)
+
+        // By this point I should have 3 objects in the array... let's take a look
+
+        myArray.forEach((obj) => {
+            console.log(obj)
+        })
+
+        // Now let's add these array of objects to a <select> on the page
+        const sel = document.getElementById('mySelect')
+        let count = 1
+
+        // In the loop, create an <option> element, add to the <select> and use a counter for the <option> value
+        myArray.forEach((obj) => {
+            let option = document.createElement("option")
+            option.text = obj.FirstName + " " + obj.LastName
+            option.value = count
+            sel.add(option);
+
+            count++
+        })
+
+        // Now let's add an event handler to the <select> when the selection is changed
+        sel.addEventListener("change", (event) => {
+            document.getElementById("selectedOption").innerHTML = event.target.value;
+        });
+
+        
+        
+    </script>
+  </body>
+</html>
